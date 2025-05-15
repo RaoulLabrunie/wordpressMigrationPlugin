@@ -130,11 +130,4 @@ Este error ocurre cuando la extensión ZipArchive no está habilitada en tu serv
 
 Este plugin está licenciado bajo [GPL v2 o posterior](https://www.gnu.org/licenses/gpl-2.0.html).
 
-## 👨‍💻 Contribuciones
 
-Las contribuciones son bienvenidas. Siéntete libre de abrir un issue o enviar un pull request.
-
-## ⭐ Agradecimientos
-
-- A la comunidad de WordPress por su continuo apoyo
-- A todos los usuarios que han proporcionado feedback para mejorar este plugin
