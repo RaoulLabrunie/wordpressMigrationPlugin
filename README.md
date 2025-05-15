@@ -1,3 +1,5 @@
+### NO USAR EN PRODUCCION
+
 # WordPress Complete Backup
 
 ![WordPress Version](https://img.shields.io/badge/WordPress-5.0%2B-blue)
@@ -89,6 +91,7 @@ echo "Migración completada con éxito!"
 ## 📊 Qué contiene el backup
 
 ### Base de datos (database.sql)
+
 - Todas las páginas y entradas
 - Toda la configuración del sitio
 - Usuarios y roles
@@ -96,6 +99,7 @@ echo "Migración completada con éxito!"
 - Menús, widgets y ajustes
 
 ### Archivos (wp-content.zip)
+
 - Todos los temas instalados
 - Todos los plugins instalados
 - Todos los archivos multimedia
@@ -124,10 +128,9 @@ Este error ocurre cuando la extensión ZipArchive no está habilitada en tu serv
 ## 🔄 Changelog
 
 ### 1.0.0
+
 - Lanzamiento inicial
 
 ## 📜 Licencia
 
 Este plugin está licenciado bajo [GPL v2 o posterior](https://www.gnu.org/licenses/gpl-2.0.html).
-
-
