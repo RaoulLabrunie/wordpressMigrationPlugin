@@ -1,136 +1,134 @@
-# NO USAR EN PRODUCCION
-
 # WordPress Complete Backup
 
 ![WordPress Version](https://img.shields.io/badge/WordPress-5.0%2B-blue)
 ![PHP Version](https://img.shields.io/badge/PHP-7.2%2B-green)
 ![License](https://img.shields.io/badge/License-GPL%20v2-orange)
 
-Un plugin de WordPress simple pero potente para realizar copias de seguridad completas de tu sitio para migración o respaldo. Diseñado para ser utilizado incluso en entornos con restricciones de servidor.
+A simple but powerful WordPress plugin to create complete backups of your site for migration or backup purposes. Designed to be used even in environments with server restrictions. NOT READY FOR PRODUCTION.
 
-## 🌟 Características
+## 🌟 Features
 
-- ✅ **Copia de seguridad completa** - Respalda la base de datos y todos los archivos de `wp-content`
-- ✅ **Sin dependencias externas** - No requiere mysqldump ni herramientas externas
-- ✅ **Compatible con all entornos** - Funciona incluso en hosts compartidos con limitaciones
-- ✅ **Migración fácil** - Ideal para migrar WordPress entre servidores
-- ✅ **URL de descarga directa** - Compatible con wget para automatización
-- ✅ **Interfaz intuitiva** - Panel de administración simple y fácil de usar
-- ✅ **Listado de backups** - Gestiona todos tus respaldos desde una única interfaz
-- ✅ **Protección de archivos** - Genera archivos .htaccess para proteger tus backups
+- ✅ **Complete backup** - Backs up the database and all `wp-content` files
+- ✅ **No external dependencies** - Doesn't require mysqldump or external tools
+- ✅ **Compatible with all environments** - Works even on shared hosts with limitations
+- ✅ **Easy migration** - Ideal for migrating WordPress between servers
+- ✅ **Direct download URL** - Compatible with wget for automation
+- ✅ **Intuitive interface** - Simple and easy-to-use admin panel
+- ✅ **Backup listing** - Manage all your backups from a single interface
+- ✅ **File protection** - Generates .htaccess files to protect your backups
 
-## 📋 Requisitos
+## 📋 Requirements
 
-- WordPress 5.0 o superior
-- PHP 7.2 o superior
-- Extensión ZipArchive habilitada en PHP
-- Permisos de escritura en la carpeta wp-content/uploads
+- WordPress 5.0 or higher
+- PHP 7.2 or higher
+- ZipArchive extension enabled in PHP
+- Write permissions on the wp-content/uploads folder
 
-## 🚀 Instalación
+## 🚀 Installation
 
-1. Descarga el archivo zip de este repositorio
-2. Ve a tu WordPress Admin > Plugins > Añadir nuevo > Subir plugin
-3. Selecciona el archivo zip descargado e instálalo
-4. Activa el plugin
+1. Download the zip file from this repository
+2. Go to WordPress Admin > Plugins > Add new > Upload plugin
+3. Select the downloaded zip file and install it
+4. Activate the plugin
 
-Alternativamente, puedes instalar el plugin manualmente:
+Alternatively, you can install the plugin manually:
 
-1. Descarga y descomprime el archivo zip
-2. Copia la carpeta `backup-wordpress-completo` a tu directorio `/wp-content/plugins/`
-3. Activa el plugin desde el menú 'Plugins' en WordPress
+1. Download and unzip the zip file
+2. Copy the `backup-wordpress-completo` folder to your `/wp-content/plugins/` directory
+3. Activate the plugin from the 'Plugins' menu in WordPress
 
-## 📝 Uso
+## 📝 Usage
 
-### Crear una copia de seguridad
+### Creating a backup
 
-1. Ve a WordPress Admin > Backup WordPress
-2. Haz clic en el botón "Crear Backup Completo"
-3. Espera a que se complete el proceso
-4. Descarga el archivo de respaldo o copia la URL para usar con wget
+1. Go to WordPress Admin > Backup WordPress
+2. Click the "Create Complete Backup" button
+3. Wait for the process to complete
+4. Download the backup file or copy the URL to use with wget
 
-### Restaurar una copia de seguridad
+### Restoring a backup
 
-1. Descomprime el archivo zip principal descargado
-2. Importa el archivo `database.sql` a tu nueva base de datos:
+1. Unzip the main downloaded zip file
+2. Import the `database.sql` file to your new database:
    ```bash
-   mysql -u usuario -p nombre_base_de_datos < database.sql
+   mysql -u username -p database_name < database.sql
    ```
-   O usa phpMyAdmin para importarlo
-3. Descomprime `wp-content.zip` en la raíz de tu WordPress:
+   Or use phpMyAdmin to import it
+3. Unzip `wp-content.zip` in the root of your WordPress:
    ```bash
-   unzip wp-content.zip -d /ruta/a/tu/wordpress/
+   unzip wp-content.zip -d /path/to/your/wordpress/
    ```
-4. Actualiza el archivo wp-config.php con los nuevos datos de conexión si es necesario
+4. Update the wp-config.php file with the new connection data if necessary
 
-### Migración automatizada
+### Automated migration
 
-Puedes utilizar el siguiente script bash para automatizar la migración a un nuevo servidor:
+You can use the following bash script to automate the migration to a new server:
 
 ```bash
 #!/bin/bash
 
-# Configuración
-BACKUP_URL="https://tu-sitio.com/wp-content/uploads/backups-wp/backup_completo_YYYYMMDD_HHMMSS.zip"
+# Configuration
+BACKUP_URL="https://your-site.com/wp-content/uploads/backups-wp/backup_completo_YYYYMMDD_HHMMSS.zip"
 LOCAL_ZIP="wordpress_backup.zip"
 
-# Descargar backup
+# Download backup
 wget -O "$LOCAL_ZIP" "$BACKUP_URL"
 
-# Extraer archivos
+# Extract files
 unzip "$LOCAL_ZIP"
 
-# Restaurar base de datos
-mysql -u usuario -p'contraseña' nombre_base_de_datos < database.sql
+# Restore database
+mysql -u username -p'password' database_name < database.sql
 
-# Restaurar archivos
-unzip wp-content.zip -d /ruta/a/tu/wordpress/
+# Restore files
+unzip wp-content.zip -d /path/to/your/wordpress/
 
-echo "Migración completada con éxito!"
+echo "Migration completed successfully!"
 ```
 
-## 📊 Qué contiene el backup
+## 📊 What the backup contains
 
-### Base de datos (database.sql)
+### Database (database.sql)
 
-- Todas las páginas y entradas
-- Toda la configuración del sitio
-- Usuarios y roles
-- Configuración de plugins
-- Menús, widgets y ajustes
+- All pages and posts
+- All site configuration
+- Users and roles
+- Plugin settings
+- Menus, widgets, and settings
 
-### Archivos (wp-content.zip)
+### Files (wp-content.zip)
 
-- Todos los temas instalados
-- Todos los plugins instalados
-- Todos los archivos multimedia
-- Cualquier archivo personalizado en wp-content
+- All installed themes
+- All installed plugins
+- All media files
+- Any custom files in wp-content
 
-## 🛠️ Solución de problemas
+## 🛠️ Troubleshooting
 
-### Error durante la restauración de la base de datos
+### Error during database restoration
 
-Si encuentras un error relacionado con valores por defecto durante la importación de la base de datos:
+If you encounter an error related to default values during database import:
 
 ```
 ERROR 1067 (42000): Invalid default value for 'comment_date'
 ```
 
-Usa este comando para importar con configuración SQL_MODE modificada:
+Use this command to import with modified SQL_MODE configuration:
 
 ```bash
-mysql -u usuario -p --init-command="SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';" base_de_datos < database.sql
+mysql -u username -p --init-command="SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';" database < database.sql
 ```
 
-### Error "ZipArchive no disponible"
+### "ZipArchive not available" error
 
-Este error ocurre cuando la extensión ZipArchive no está habilitada en tu servidor. Contacta a tu proveedor de hosting para habilitar esta extensión.
+This error occurs when the ZipArchive extension is not enabled on your server. Contact your hosting provider to enable this extension.
 
 ## 🔄 Changelog
 
 ### 1.0.0
 
-- Lanzamiento inicial
+- Initial release
 
-## 📜 Licencia
+## 📜 License
 
-Este plugin está licenciado bajo [GPL v2 o posterior](https://www.gnu.org/licenses/gpl-2.0.html).
+This plugin is licensed under [GPL v2 or later](https://www.gnu.org/licenses/gpl-2.0.html).
